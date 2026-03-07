@@ -1,0 +1,16 @@
+{
+  "shaders": [
+    {
+      "name": "BasicVS",
+      "file": "Resources/Shaders/Basic.hlsl",
+      "entry": "VSMain",
+      "profile": "vs_6_0"
+    },
+    {
+      "name": "BasicPS",
+      "file": "Resources/Shaders/Basic.hlsl",
+      "entry": "PSMain",
+      "profile": "ps_6_0"
+    }
+  ]
+}

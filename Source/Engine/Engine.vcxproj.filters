@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Application">
+      <UniqueIdentifier>{5a3c6448-796a-4770-ad28-4e9ca3284973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{89924c9f-ad64-40ff-98b9-fb36c6a19835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{2ca4c416-5e4a-4150-a1f0-f41d4da02193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{0dc73f15-1696-4106-8b80-31a00ce79622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Logger">
+      <UniqueIdentifier>{20ce472e-32c8-4f6d-829b-7117769edfc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Timer">
+      <UniqueIdentifier>{965d9e7f-6013-4212-893f-a8969a64006e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Window">
+      <UniqueIdentifier>{4817e18d-ebaa-4dba-af0c-c4544f45babf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Cmd">
+      <UniqueIdentifier>{3f523494-8cb2-42b8-846a-8f4197647c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Descriptor">
+      <UniqueIdentifier>{d66c57e6-31b5-443f-b507-319fb6766cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Device">
+      <UniqueIdentifier>{ac53aa14-79cd-434f-a0a1-840bd3f4b8e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Shader">
+      <UniqueIdentifier>{3391a173-2353-44ce-8313-ee36c4e7e81d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\SwapChain">
+      <UniqueIdentifier>{6a642fdb-6056-4001-b6b8-85f4f730e8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\String">
+      <UniqueIdentifier>{dd759fa9-24d3-40c5-816d-e5840dfaeb7e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application\Application.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Window\ApplicationWindow.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer\FrameTimer.cpp">
+      <Filter>Core\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GraphicsEngine.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Cmd\CommandContext.cpp">
+      <Filter>Graphics\Cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Cmd\CommandQueue.cpp">
+      <Filter>Graphics\Cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Descriptor\DynamicDescriptorHeap.cpp">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Descriptor\PersistentDescriptorHeap.cpp">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Device\GraphicsDevice.cpp">
+      <Filter>Graphics\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\SwapChain\SwapChain.cpp">
+      <Filter>Graphics\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Shader\ShaderManager.cpp">
+      <Filter>Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application\Application.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Logger\Logger.h">
+      <Filter>Core\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Logger\LogMacros.h">
+      <Filter>Core\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Window\ApplicationWindow.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer\FrameTimer.h">
+      <Filter>Core\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GraphicsEngine.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Cmd\CommandContext.h">
+      <Filter>Graphics\Cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Cmd\CommandQueue.h">
+      <Filter>Graphics\Cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\DescriptorHandle.h">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\DynamicDescriptorHeap.h">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\PersistentDescriptorHeap.h">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Device\GraphicsDevice.h">
+      <Filter>Graphics\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\SwapChain\SwapChain.h">
+      <Filter>Graphics\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Shader\ShaderManager.h">
+      <Filter>Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Core\String\StringUtil.h">
+      <Filter>Core\String</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
