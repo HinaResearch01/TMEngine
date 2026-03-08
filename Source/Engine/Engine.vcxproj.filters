@@ -40,6 +40,9 @@
     <Filter Include="Core\String">
       <UniqueIdentifier>{dd759fa9-24d3-40c5-816d-e5840dfaeb7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Descriptor\Bindless">
+      <UniqueIdentifier>{267097ba-122d-4cb5-ae1c-5e01ac7212be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\Application.cpp">
@@ -76,6 +79,18 @@
       <Filter>Graphics\Shader</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessDescriptorHeap.cpp">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessDescriptorWriter.cpp">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessHeapStorage.cpp">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessSlotAllocator.cpp">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\Application.h">
@@ -123,6 +138,18 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Core\String\StringUtil.h">
       <Filter>Core\String</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessDescriptorHeap.h">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessDescriptorWriter.h">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessHeapStorage.h">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessSlotAllocator.h">
+      <Filter>Graphics\Descriptor\Bindless</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

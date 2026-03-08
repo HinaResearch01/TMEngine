@@ -103,6 +103,10 @@
     <ClCompile Include="Core\Window\ApplicationWindow.cpp" />
     <ClCompile Include="Graphics\Cmd\CommandContext.cpp" />
     <ClCompile Include="Graphics\Cmd\CommandQueue.cpp" />
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessDescriptorHeap.cpp" />
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessDescriptorWriter.cpp" />
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessHeapStorage.cpp" />
+    <ClCompile Include="Graphics\Descriptor\Bindless\BindlessSlotAllocator.cpp" />
     <ClCompile Include="Graphics\Descriptor\DynamicDescriptorHeap.cpp" />
     <ClCompile Include="Graphics\Descriptor\PersistentDescriptorHeap.cpp" />
     <ClCompile Include="Graphics\Device\GraphicsDevice.cpp" />
@@ -123,6 +127,10 @@
     <ClInclude Include="Core\Window\ApplicationWindow.h" />
     <ClInclude Include="Graphics\Cmd\CommandContext.h" />
     <ClInclude Include="Graphics\Cmd\CommandQueue.h" />
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessDescriptorHeap.h" />
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessDescriptorWriter.h" />
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessHeapStorage.h" />
+    <ClInclude Include="Graphics\Descriptor\Bindless\BindlessSlotAllocator.h" />
     <ClInclude Include="Graphics\Descriptor\DescriptorHandle.h" />
     <ClInclude Include="Graphics\Descriptor\DynamicDescriptorHeap.h" />
     <ClInclude Include="Graphics\Descriptor\PersistentDescriptorHeap.h" />
