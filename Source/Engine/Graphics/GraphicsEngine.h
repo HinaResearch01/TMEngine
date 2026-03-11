@@ -4,6 +4,7 @@
 #include "Cmd/CommandQueue.h"
 #include "Descriptor/DynamicDescriptorHeap.h"
 #include "Descriptor/PersistentDescriptorHeap.h"
+#include "Descriptor/Bindless/BindlessDescriptorHeap.h"
 #include "Device/GraphicsDevice.h"
 #include "Shader/ShaderManager.h"
 #include "SwapChain/SwapChain.h"
@@ -31,13 +32,12 @@ public:
 	CommandQueue* GetCommandQueue() const { return commandQueue_.get(); }
 	CommandContext* GetCommandContext() const { return commandContext_.get(); }
 	SwapChain* GetSwapChain() const { return swapChain_.get(); }
+	// ディスクリプタヒープ
 	PersistentDescriptorHeap* GetRtvHeap() const { return rtvHeap_.get(); }
 	PersistentDescriptorHeap* GetDsvHeap() const { return dsvHeap_.get(); }
-	PersistentDescriptorHeap* GetSrvCbvUavHeap() const {
-		return srvCbvUavHeap_.get();
-	}
-
+	PersistentDescriptorHeap* GetSrvCbvUavHeap() const { return srvCbvUavHeap_.get(); }
 	DynamicDescriptorHeap* GetDynamicHeap() const { return dynamicHeap_.get(); }
+	BindlessDescriptorHeap* GetBindlessHeap() const { return bindlessHeap_.get(); }
 #pragma endregion
 
 private:
@@ -54,6 +54,8 @@ private:
 	std::unique_ptr<PersistentDescriptorHeap> srvCbvUavHeap_;
 	// 展示棚 (Dynamic)
 	std::unique_ptr<DynamicDescriptorHeap> dynamicHeap_;
+	// Bindless
+	std::unique_ptr<BindlessDescriptorHeap> bindlessHeap_;
 
 	// --- シェーダー ---
 	std::unique_ptr<ShaderManager> shaderMgr_;

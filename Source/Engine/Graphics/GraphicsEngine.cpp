@@ -11,6 +11,7 @@ GraphicsEngine::GraphicsEngine() {
 	dsvHeap_ = std::make_unique<PersistentDescriptorHeap>();
 	srvCbvUavHeap_ = std::make_unique<PersistentDescriptorHeap>();
 	dynamicHeap_ = std::make_unique<DynamicDescriptorHeap>();
+	bindlessHeap_ = std::make_unique<BindlessDescriptorHeap>();
 	swapChain_ = std::make_unique<SwapChain>();
 	shaderMgr_ = std::make_unique<ShaderManager>();
 }
@@ -33,6 +34,9 @@ void GraphicsEngine::Init(HWND hwnd, uint32_t width, uint32_t height) {
 
 	// DescriptorHeap (展示棚) の初期化
 	dynamicHeap_->Init(device_->GetDevice(), 1024);
+
+	// BindlessHeap の初期化
+	bindlessHeap_->Init(device_->GetDevice());
 
 	// SwapChain の初期化
 	swapChain_->Init(device_.get(), commandQueue_.get(), hwnd, width, height,

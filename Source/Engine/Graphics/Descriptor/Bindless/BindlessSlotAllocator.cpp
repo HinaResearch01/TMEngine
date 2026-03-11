@@ -17,6 +17,8 @@ void BindlessSlotAllocator::Init(uint32_t capacity)
 
 uint32_t BindlessSlotAllocator::Allocate()
 {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
     uint32_t slotIndex = kInvalidDescriptorIndex;
 
     if (!freeList_.empty()) {
@@ -39,6 +41,8 @@ uint32_t BindlessSlotAllocator::Allocate()
 
 void BindlessSlotAllocator::Release(uint32_t index, uint64_t retireFenceValue)
 {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
     if (index >= capacity_) {
         LOG_ERROR("Graphics", "BindlessSlotAllocator::Release: Index out of range",
             "index", index);
@@ -53,28 +57,25 @@ void BindlessSlotAllocator::Release(uint32_t index, uint64_t retireFenceValue)
     // 即時返却せず遅延キューへ
     allocatedFlags_[index] = false;
     --usedCount_;
-    pendingFrees_.push_back({ index, retireFenceValue });
+    pendingFrees_.push({ index, retireFenceValue });
 }
 
 void BindlessSlotAllocator::ProcessDeferredFrees(uint64_t completedFenceValue)
 {
-    size_t writeIndex = 0;
-
-    for (size_t readIndex = 0; readIndex < pendingFrees_.size(); ++readIndex) {
-        const PendingFreeEntry& entry = pendingFrees_[readIndex];
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    while (!pendingFrees_.empty()) {
+        const PendingFreeEntry& entry = pendingFrees_.front();
 
         if (entry.retireFenceValue <= completedFenceValue) {
             freeList_.push(entry.index);
+            pendingFrees_.pop();
         }
         else {
-            if (writeIndex != readIndex) {
-                pendingFrees_[writeIndex] = pendingFrees_[readIndex];
-            }
-            ++writeIndex;
+            // Fence値は単調増加を前提としているため、先頭が完了していなければ以降も未完了
+            break;
         }
     }
-
-    pendingFrees_.resize(writeIndex);
 }
 
 bool BindlessSlotAllocator::IsAllocated(uint32_t index) const

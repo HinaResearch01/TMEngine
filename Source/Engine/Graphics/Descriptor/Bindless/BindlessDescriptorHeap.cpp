@@ -4,7 +4,7 @@
 
 namespace tme::sys::graphics {
 
-void BindlessDescriptorHeap::Init(Microsoft::WRL::ComPtr<ID3D12Device> device)
+void BindlessDescriptorHeap::Init(ID3D12Device* device)
 {
     if (!device) {
         LOG_ERROR("Graphics", "BindlessDescriptorHeap::Init: Device is null");
@@ -21,26 +21,22 @@ void BindlessDescriptorHeap::Init(Microsoft::WRL::ComPtr<ID3D12Device> device)
 
 BindlessHandle BindlessDescriptorHeap::RegisterSRV(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
 {
-    return RegisterInternal(DescriptorKind::SRV, srvAllocator_,
-        BindlessHeapLayout::kSrvBase, srcHandle);
+    return RegisterInternal(DescriptorKind::SRV, srvAllocator_, srcHandle);
 }
 
 BindlessHandle BindlessDescriptorHeap::RegisterUAV(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
 {
-    return RegisterInternal(DescriptorKind::UAV, uavAllocator_,
-        BindlessHeapLayout::kUavBase, srcHandle);
+    return RegisterInternal(DescriptorKind::UAV, uavAllocator_, srcHandle);
 }
 
 BindlessHandle BindlessDescriptorHeap::RegisterCBV(D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
 {
-    return RegisterInternal(DescriptorKind::CBV, cbvAllocator_,
-        BindlessHeapLayout::kCbvBase, srcHandle);
+    return RegisterInternal(DescriptorKind::CBV, cbvAllocator_, srcHandle);
 }
 
 BindlessHandle BindlessDescriptorHeap::RegisterInternal(
     DescriptorKind kind,
     BindlessSlotAllocator& allocator,
-    uint32_t baseIndex,
     D3D12_CPU_DESCRIPTOR_HANDLE srcHandle)
 {
     BindlessHandle result{ kind, kInvalidDescriptorIndex };

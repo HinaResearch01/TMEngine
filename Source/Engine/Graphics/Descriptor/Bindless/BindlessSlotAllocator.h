@@ -3,6 +3,9 @@
 #include <cstdint>
 #include <queue>
 #include <vector>
+#include <mutex>
+
+#include "BindlessHeapStorage.h"
 
 namespace tme::sys::graphics {
 
@@ -17,6 +20,17 @@ struct BindlessHandle {
     DescriptorKind kind = DescriptorKind::SRV;
     uint32_t       index = kInvalidDescriptorIndex;
     bool IsValid() const { return index != kInvalidDescriptorIndex; }
+    
+    // Shader Model 6.6のbindless用に絶対インデックスを取得する
+    uint32_t GetAbsoluteIndex() const {
+        if (!IsValid()) return kInvalidDescriptorIndex;
+        switch (kind) {
+            case DescriptorKind::SRV: return BindlessHeapLayout::kSrvBase + index;
+            case DescriptorKind::UAV: return BindlessHeapLayout::kUavBase + index;
+            case DescriptorKind::CBV: return BindlessHeapLayout::kCbvBase + index;
+        }
+        return kInvalidDescriptorIndex;
+    }
 };
 
 // 1リージョン分のスロット管理を担う
@@ -53,7 +67,10 @@ private:
     uint32_t usedCount_ = 0;
 
     std::queue<uint32_t> freeList_;
-    std::vector<PendingFreeEntry> pendingFrees_;
+    std::queue<PendingFreeEntry> pendingFrees_;
+
+    // Thread safety
+    std::mutex mutex_;
 
     // デバッグ用: 二重解放検出
     std::vector<bool> allocatedFlags_;
